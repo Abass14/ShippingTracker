@@ -1,118 +1,62 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import useAppTheme from "./src/app/hooks/useAppTheme";
+import AppText from "./src/app/components/text";
+import { AppColorTheme } from "./src/utils/interfaces/Theme.types";
+import { TextTypes } from "./src/utils/enum/TextEnums";
+import AppButton from "./src/app/components/button";
+import Checkbox from "./src/app/components/checkbox";
+import AppInput from "./src/app/components/input";
+import AppSearchBar from "./src/app/components/search-bar";
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const App = () => {
+  const { appColors, setThemeMode } = useAppTheme()
+  const style = styles(appColors)
+  const [value, setValue] = useState('')
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <View style={style.container}>
+      <AppText type={TextTypes.BOLD}>
+        Hello, how are you?
+      </AppText>
+      <AppButton>
+        Hello
+      </AppButton>
+      <Checkbox
+        isChecked={false}
+        onChecked={() => { }}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+      <AppInput
+        placeholder="Hello"
+        value={value}
+        onChangeText={setValue}
+        label="Something"
+      />
+      <AppSearchBar
+        placeholder="Hello"
+        value={value}
+        onChangeText={setValue}
+      />
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const styles = (color: AppColorTheme) => StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: color.white,
+    paddingTop: 50,
+    gap: 10,
+    padding: 10
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  first: {
+    flex: 1,
+    backgroundColor: color.black,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  second: {
+    flex: 1,
+    backgroundColor: color.red
+  }
+})
 
-export default App;
+export default App
