@@ -10,8 +10,9 @@ import ShippingTabWalletIcon from "../../../assets/svg/ShippingTabWallet";
 import ShippingTabProfileIcon from "../../../assets/svg/ShippingTabProfile";
 import { useCallback } from "react";
 import useAppTheme from "../../hooks/useAppTheme";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import AppText from "../../components/text";
+import { TextTypes } from "../../../utils/enum/TextEnums";
 
 const {Navigator, Screen} = createBottomTabNavigator()
 
@@ -44,27 +45,45 @@ const AuthenticatedTab = () => {
         [Stacks.ProfileStack]: <ShippingTabProfileIcon color={color} />,
     })
 
-    const TabNameMap = (color: string) => ({
+    const TabNameMap = {
         [Stacks.DashboardStack]: 'Shipments',
         [Stacks.ScanStack]: 'Scan',
         [Stacks.WalletStack]: 'Wallet',
         [Stacks.ProfileStack]: 'Profile',
-    })
+    }
 
     const TabIcon = useCallback((tab: string, focused: boolean) => {
         const color = focused ? appColors.royalBlue : appColors.tabGray
         return (
             <View style={style.tab}>
                 {IconMap(color)[tab]}
-                <AppText style={[style.text, {color}]}>
-                    {tab}
+                <AppText type={TextTypes.MEDIUM} style={[style.text, {color}]}>
+                    {TabNameMap[tab]}
                 </AppText>
             </View>
         )
     }, [])
 
     return (
-        <Navigator>
+        <Navigator
+            screenOptions={{
+                header: () => null,
+                tabBarStyle: {
+                    backgroundColor: appColors.white, 
+                    borderWidth: 0,
+                    width: '100%',
+                    ...Platform.select({
+                        android: {
+                            height: 70,
+                            paddingBottom: 10
+                        },
+                        ios: {
+                            paddingTop: 10
+                        }
+                    })
+                }
+            }}
+        >
             {AuthenticatedTabData.map(route => (
                 <Screen 
                     key={route?.name}
@@ -83,7 +102,9 @@ const AuthenticatedTab = () => {
 
 const style = StyleSheet.create({
     tab: {
-        gap: 10
+        gap: 5,
+        alignItems: 'center',
+        paddingTop: 10
     },
     text: {
         textAlign: 'center',

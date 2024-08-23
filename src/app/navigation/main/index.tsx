@@ -1,13 +1,19 @@
 import { NavigationContainer } from "@react-navigation/native"
-import SplashScreen from "../../features/splash"
+import SplashScreenWrapper from "../../features/splash"
 import AuthenticationStack from "../stack/AuthenticationStack"
 import AuthenticatedTab from "../bottom-tab/AuthenticatedTab"
+import { useEffect } from "react"
+import SplashScreen from "react-native-splash-screen"
 
 const Main = () => {
-    const authenticated = false
+    const authenticated = true
+
+    useEffect(() => {
+        SplashScreen.hide()
+    }, [])
 
     return (
-        <SplashScreen>
+        <SplashScreenWrapper>
             <NavigationContainer>
                 {!authenticated ? (
                     <AuthenticationStack />
@@ -15,7 +21,7 @@ const Main = () => {
                     <AuthenticatedTab />
                 )}
             </NavigationContainer>
-        </SplashScreen>
+        </SplashScreenWrapper>
     )
 }
 

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { AppColorTheme } from "../../../utils/interfaces/Theme.types";
 
 export const styles = (color: AppColorTheme) => StyleSheet.create({
@@ -8,11 +8,15 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     inputContainer: {
         gap: 4,
         backgroundColor: color.gray,
-        borderRadius: 10, 
+        borderRadius: 10,
         borderColor: color.royalBlue,
         width: '100%',
-        height: 50,
+        height: Platform.select({
+            android: 60,
+            ios: 56
+        }),
         paddingHorizontal: 12,
+        justifyContent: 'center',
         paddingVertical: 6
     },
     label: {
@@ -22,7 +26,9 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     input: {
         color: color.royalBlue,
         fontSize: 14,
-        flex: 1
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 5
     },
     placeholder: {
         fontSize: 14

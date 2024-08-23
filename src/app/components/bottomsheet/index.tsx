@@ -30,11 +30,12 @@ const AppBottomSheet = ({
             keyboardBehavior='extend'
             keyboardBlurBehavior='restore'
             android_keyboardInputMode="adjustResize"
+            index={-1}
             {...rest}
         >
             <BottomSheetScrollView automaticallyAdjustKeyboardInsets style={styleSheet.container} contentContainerStyle={{flexGrow: 1}}>
                 <View style={styleSheet.header}>
-                    <Pressable style={styleSheet.row} onPress={() => bottomsheetRef.current?.snapToPosition(0)}>
+                    <Pressable style={styleSheet.row} onPress={() => bottomsheetRef.current?.snapToPosition(-1)}>
                         {withBackIcon && <ChevroLeftIcon />}
                         <AppText type={TextTypes.MEDIUM} style={styleSheet.hyperlinks}>
                             Cancel

@@ -26,13 +26,11 @@ const ShipmentFilterSheet = ({
         }, {}) //convert selected filter to map as initial vaalue
     )
 
-    const memorizedSelectedFilters = filtersSelected?.reduce(
+    const filters = filtersSelected?.reduce(
         (acc: Record<string, ShipmentStatus>, item) => {
             acc[item] = item
             return acc
         }, {})
-
-    console.log(selectedFilters)
 
     const onDone = () => {
         onSelectFilters(Object.values(selectedFilters))
@@ -55,7 +53,7 @@ const ShipmentFilterSheet = ({
     }
 
     useEffect(() => {
-        setSelectedFilters(memorizedSelectedFilters)
+        setSelectedFilters(filters)
     }, [filtersSelected])
 
     return (

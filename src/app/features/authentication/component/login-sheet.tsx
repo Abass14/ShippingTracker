@@ -42,6 +42,7 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                         <AppInput
                             placeholder="Username / Email"
                             label="Username / Email"
+                            keyboardType="email-address"
                         />
                         <AppInput
                             placeholder="Password"
@@ -50,7 +51,7 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                         />
                     </View>
                 </View>
-                <AppButton isLoading>
+                <AppButton>
                     Login
                 </AppButton>
             </View>

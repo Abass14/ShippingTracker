@@ -5,7 +5,7 @@ import { styles } from "./styles"
 import { useEffect, useRef, useState } from "react"
 import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils"
 
-const SplashScreen = ({ children }: ViewProps) => {
+const SplashScreenWrapper = ({ children }: ViewProps) => {
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
     const height = Dimensions.get('window').height
@@ -30,7 +30,7 @@ const SplashScreen = ({ children }: ViewProps) => {
             Animated.timing(sizeAnim, {
                 toValue: 1,
                 duration: 2000,
-                useNativeDriver: false
+                useNativeDriver: false,
             }),
             Animated.parallel([
                 Animated.timing(sizeAnim, {
@@ -73,4 +73,4 @@ const SplashScreen = ({ children }: ViewProps) => {
     )
 }
 
-export default SplashScreen
+export default SplashScreenWrapper
