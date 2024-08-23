@@ -3,9 +3,9 @@ import SplashIcon from "../../../assets/svg/SplashIcon"
 import useAppTheme from "../../hooks/useAppTheme"
 import { styles } from "./styles"
 import { useEffect, useRef, useState } from "react"
-import LandingScreen from "../authentication/screen/landing-screen"
+import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils"
 
-const SplashScreen = () => {
+const SplashScreen = ({ children }: ViewProps) => {
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
     const height = Dimensions.get('window').height
@@ -29,19 +29,19 @@ const SplashScreen = () => {
         Animated.sequence([
             Animated.timing(sizeAnim, {
                 toValue: 1,
-                duration:2000,
+                duration: 2000,
                 useNativeDriver: false
             }),
             Animated.parallel([
                 Animated.timing(sizeAnim, {
                     toValue: 2,
-                    duration:1000,
+                    duration: 1000,
                     useNativeDriver: false,
                     delay: 1000
                 }),
                 Animated.timing(sizeAnim, {
                     toValue: 2,
-                    duration:1000,
+                    duration: 1000,
                     useNativeDriver: false,
                     delay: 1000
                 })
@@ -55,15 +55,17 @@ const SplashScreen = () => {
 
     if (showLanding) {
         return (
-            <LandingScreen />
+            <>
+                {children}
+            </>
         )
     }
 
     return (
-        <Animated.View style={[styleSheet.container, {backgroundColor: bgColor}]}>
+        <Animated.View style={[styleSheet.container, { backgroundColor: bgColor }]}>
             <StatusBar backgroundColor={appColors.white} barStyle={'dark-content'} />
             <View style={styleSheet.main}>
-                <Animated.View style={[styleSheet.icon, {width: size, height: size}]}>
+                <Animated.View style={[styleSheet.icon, { width: size, height: size }]}>
                     <SplashIcon />
                 </Animated.View>
             </View>

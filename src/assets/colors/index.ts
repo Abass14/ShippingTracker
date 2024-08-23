@@ -14,7 +14,8 @@ export const LightModeColors = {
     lightSuccessGreen: '#E3FAD6',
     successGreen: '#208d29',
     lightWarningOrange: '#FFF3D5',
-    warningOrange: '#DB7E21'
+    warningOrange: '#DB7E21',
+    tabGray: '#A7A3B3'
 }
 
 export const DarkModeColors = {
@@ -32,7 +33,8 @@ export const DarkModeColors = {
     lightSuccessGreen: '#E3FAD6',
     successGreen: '#208d29',
     lightWarningOrange: '#FFF3D5',
-    warningOrange: '#DB7E21'
+    warningOrange: '#DB7E21',
+    tabGray: '#A7A3B3'
 }
 
 export const Colors = {
