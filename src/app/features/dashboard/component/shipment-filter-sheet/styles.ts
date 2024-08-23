@@ -3,7 +3,8 @@ import { AppColorTheme } from "../../../../../utils/interfaces/Theme.types";
 
 export const styles = (color: AppColorTheme) => StyleSheet.create({
     container: {
-        gap: 12
+        gap: 12,
+        height: '100%'
     },
     title: {
         fontSize: 14,

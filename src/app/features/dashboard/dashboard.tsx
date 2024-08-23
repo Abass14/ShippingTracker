@@ -18,14 +18,21 @@ import { useState } from "react"
 import { ShipmentStatus } from "../../../utils/enum/ShipmentStatus"
 
 const Dashboard = () => {
-    const {appColors} = useAppTheme()
+    const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
-    const {bottomSheetRef, openBottomSheet} = useBottomSheet()
+    const { bottomSheetRef, openBottomSheet } = useBottomSheet()
     const [filters, setFilters] = useState<ShipmentStatus[]>([])
 
     return (
         <Container
             header={<Header />}
+            bottomSheetsModal={
+                <ShipmentFilterSheet
+                    bottomsheetRef={bottomSheetRef}
+                    filtersSelected={filters}
+                    onSelectFilters={setFilters}
+                />
+            }
         >
             <View style={styleSheet.container}>
                 <View style={styleSheet.nameContainer}>
@@ -36,7 +43,7 @@ const Dashboard = () => {
                         Ibrahim Shaker
                     </AppText>
                 </View>
-                <AppSearchBar 
+                <AppSearchBar
                     placeholder="Search"
                 />
                 <View style={styleSheet.row}>
@@ -61,20 +68,20 @@ const Dashboard = () => {
                             Shipments
                         </AppText>
                         <View style={styleSheet.checkboxRow}>
-                            <Checkbox 
+                            <Checkbox
                                 isChecked={true}
-                                onChecked={checked => {}}
+                                onChecked={checked => { }}
                             />
                             <AppText style={styleSheet.markAll} type={TextTypes.MEDIUM}>
                                 Mark All
                             </AppText>
                         </View>
                     </View>
-                    <FlatList 
+                    <FlatList
                         data={data}
                         keyExtractor={(_, idx) => idx?.toString()}
-                        renderItem={({item}) => (
-                            <ShipmentCard 
+                        renderItem={({ item }) => (
+                            <ShipmentCard
                                 shipment={item}
                             />
                         )}
@@ -82,11 +89,6 @@ const Dashboard = () => {
                     />
                 </View>
             </View>
-            <ShipmentFilterSheet 
-                bottomsheetRef={bottomSheetRef}
-                filtersSelected={filters}
-                onSelectFilters={setFilters}
-            />
         </Container>
     )
 }

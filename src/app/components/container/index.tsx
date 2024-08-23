@@ -12,7 +12,8 @@ const Container = ({
     statusBarProps={
         backgroundColor: LightModeColors.white,
         barStyle: 'dark-content'
-    }, 
+    },
+    bottomSheetsModal, 
     ...rest
 }: IContainer) => {
     const {appColors} = useAppTheme()
@@ -31,6 +32,7 @@ const Container = ({
                     ) : children}
                 </KeyboardAvoidingView>
             </SafeAreaView>
+            {bottomSheetsModal}
         </View>
     )
 }
