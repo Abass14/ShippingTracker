@@ -10,6 +10,7 @@ const AppInput = ({
     value,
     error,
     style,
+    prefix,
     ...rest
 }: IAppInput) => {
     const { appColors } = useAppTheme()
@@ -20,7 +21,7 @@ const AppInput = ({
     const fadeIn = () => {
         Animated.timing(labelOpacity, {
             toValue: 1,
-            duration:300,
+            duration: 300,
             easing: Easing.in(Easing.ease),
             useNativeDriver: true
         }).start()
@@ -29,7 +30,7 @@ const AppInput = ({
     const fadeOut = () => {
         Animated.timing(labelOpacity, {
             toValue: 0,
-            duration:300,
+            duration: 300,
             easing: Easing.out(Easing.ease),
             useNativeDriver: true
         }).start()
@@ -51,23 +52,30 @@ const AppInput = ({
                 isFocused ? { borderWidth: 1 } : null
             ]}>
                 {label && isFocused ? (
-                    <Animated.View style={{opacity: labelOpacity}}>
+                    <Animated.View style={{ opacity: labelOpacity }}>
                         <AppText style={styleSheet.label}>
                             {label}
                         </AppText>
                     </Animated.View>
                 ) : null}
-                <TextInput
-                    style={[styleSheet.input, style]}
-                    value={value}
-                    onFocus={() => {
-                        setIsFocused(true)
-                    }}
-                    onBlur={() => {
-                        setIsFocused(false)
-                    }}
-                    {...rest}
-                />
+                <View style={styleSheet.row}>
+                    {prefix && value ? (
+                        <AppText style={styleSheet.prefix}>
+                            {prefix}
+                        </AppText>
+                    ) : null}
+                    <TextInput
+                        style={[styleSheet.input, style]}
+                        value={value}
+                        onFocus={() => {
+                            setIsFocused(true)
+                        }}
+                        onBlur={() => {
+                            setIsFocused(false)
+                        }}
+                        {...rest}
+                    />
+                </View>
             </View>
             {error && (
                 <AppText style={styleSheet.error}>

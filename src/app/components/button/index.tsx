@@ -37,7 +37,7 @@ const AppButton = ({
             ) : (
                 <>
                     {Icon}
-                    <AppText type={TextTypes.MEDIUM} style={[styles.text, {color: textColors}, labelStyle]}>
+                    <AppText type={TextTypes.BOLD} style={[styles.text, {color: textColors}, labelStyle]}>
                         {children}
                     </AppText>
                 </>

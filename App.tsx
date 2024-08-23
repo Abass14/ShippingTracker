@@ -8,18 +8,30 @@ import AppButton from "./src/app/components/button";
 import Checkbox from "./src/app/components/checkbox";
 import AppInput from "./src/app/components/input";
 import AppSearchBar from "./src/app/components/search-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import AppBottomSheet from "./src/app/components/bottomsheet";
+import useBottomSheet from "./src/app/hooks/useBottomSheet";
+import { ButtonTypes } from "./src/utils/enum/ButtonTypes";
+import SplashScreen from "./src/app/features/splash";
+import Dashboard from "./src/app/features/dashboard/dashboard";
 
 const App = () => {
   const { appColors, setThemeMode } = useAppTheme()
   const style = styles(appColors)
   const [value, setValue] = useState('')
+  const { bottomSheetRef, openBottomSheet } = useBottomSheet()
+  const snapPoint = ['1%', '10%', '20%', '30%', '40%']
+
 
   return (
-    <View style={style.container}>
-      <AppText type={TextTypes.BOLD}>
+    <GestureHandlerRootView style={style.container}>
+      {/* <SplashScreen /> */}
+      <Dashboard />
+
+      {/* <AppText type={TextTypes.BOLD}>
         Hello, how are you?
       </AppText>
-      <AppButton>
+      <AppButton onPress={openBottomSheet}>
         Hello
       </AppButton>
       <Checkbox
@@ -31,13 +43,26 @@ const App = () => {
         value={value}
         onChangeText={setValue}
         label="Something"
+        secureTextEntry
       />
       <AppSearchBar
         placeholder="Hello"
         value={value}
         onChangeText={setValue}
       />
-    </View>
+      <AppBottomSheet
+        bottomsheetRef={bottomSheetRef}
+        snapPoints={snapPoint}
+        enablePanDownToClose
+        withBackIcon
+      >
+        <View>
+          <AppText>
+            Hellow world
+          </AppText>
+        </View>
+      </AppBottomSheet> */}
+    </GestureHandlerRootView>
   )
 }
 
@@ -45,9 +70,9 @@ const styles = (color: AppColorTheme) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: color.white,
-    paddingTop: 50,
+    // paddingTop: 50,
     gap: 10,
-    padding: 10
+    // padding: 10
   },
   first: {
     flex: 1,

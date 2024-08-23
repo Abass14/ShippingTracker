@@ -11,8 +11,9 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
         borderRadius: 10, 
         borderColor: color.royalBlue,
         width: '100%',
-        height: 56,
+        height: 50,
         paddingHorizontal: 12,
+        paddingVertical: 6
     },
     label: {
         fontSize: 10,
@@ -20,11 +21,11 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     },
     input: {
         color: color.royalBlue,
-        fontSize: 16,
+        fontSize: 14,
         flex: 1
     },
     placeholder: {
-        fontSize: 16
+        fontSize: 14
     },
     errorState: {
         borderColor: color.red,
@@ -33,5 +34,16 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     error: {
         fontSize: 11,
         color: color.red
+    },
+    row: {
+        flexDirection: 'row',
+        width: '100%',
+        flex: 1,
+        alignItems: 'center',
+        gap: 5
+    },
+    prefix: {
+        fontSize: 13,
+        color: color.textGray,
     }
 })
