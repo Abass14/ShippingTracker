@@ -10,6 +10,14 @@ Add a **.env** file in the root of the project and add the BASE_URL (BASE_URL as
 
 <BASE_URL>=some string value
 
+## Install dependencies
+
+Run yarn install/npm install to install application dependencies
+
+## Link third party libraries
+
+Run pod install in the ios folder to link all third party dependencies with cocopod
+
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
