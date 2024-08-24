@@ -23,6 +23,7 @@ const ShipmentCard = ({
     return (
         <Pressable
             style={[styleSheet.container, checked ? styleSheet.active : null]}
+            onPress={() => setChecked(!checked)}
             {...rest}
         >
             <Checkbox
@@ -32,18 +33,18 @@ const ShipmentCard = ({
             <ShpipmentBox />
             <View style={styleSheet.details}>
                 <AppText style={styleSheet.awbText}>
-                    {shipment?.name}
+                    AWB
                 </AppText>
                 <AppText type={TextTypes.BOLD} style={styleSheet.id} numberOfLines={1}>
-                    {shipment?.id}
+                    {shipment?.name}
                 </AppText>
                 <View style={styleSheet.detailsRow}>
                     <AppText style={styleSheet.cityText}>
-                        {shipment?.from}
+                        {shipment?.origin_city}
                     </AppText>
                     <ArrowRight />
                     <AppText style={styleSheet.cityText}>
-                        {shipment?.to}
+                        {shipment?.destination_city}
                     </AppText>
                 </View>
             </View>
@@ -57,7 +58,7 @@ const ShipmentCard = ({
                     ]}
                     type={TextTypes.MEDIUM}
                 >
-                    {shipment?.status}
+                    {shipment?.status?.includes("New") ? "New" : shipment?.status}
                 </AppText>
             </View>
             <ArrowIndicatorIcon />

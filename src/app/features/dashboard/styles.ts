@@ -54,5 +54,13 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     },
     list: {
         gap: 10
+    },
+    emptyState: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    emptyStateText: {
+        fontSize: 14
     }
 })

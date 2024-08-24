@@ -5,5 +5,6 @@ export enum ShipmentStatus {
     Cancelled = 'Cancelled',
     Lost = 'Lost',
     OnHold = 'On Hold',
-    Rejected = 'Rejected'
+    Rejected = 'Rejected',
+    NewShipmentTT = "New ShipmentTT"
 }

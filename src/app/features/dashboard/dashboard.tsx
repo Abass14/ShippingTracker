@@ -1,4 +1,4 @@
-import { FlatList, View } from "react-native"
+import { FlatList, RefreshControl, View } from "react-native"
 import Container from "../../components/container"
 import AppText from "../../components/text"
 import Header from "./component/header"
@@ -16,12 +16,15 @@ import ShipmentFilterSheet from "./component/shipment-filter-sheet"
 import useBottomSheet from "../../hooks/useBottomSheet"
 import { useState } from "react"
 import { ShipmentStatus } from "../../../utils/enum/ShipmentStatus"
+import useShipments from "./hook/useShipments"
+import { useAppSelector } from "../../store/hooks/useSelector"
 
 const Dashboard = () => {
+    const {user} = useAppSelector(state => state.Authentication)
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
+    const { shipment, filters, setFilters, isLoading, onRefresh } = useShipments()
     const { bottomSheetRef, openBottomSheet } = useBottomSheet()
-    const [filters, setFilters] = useState<ShipmentStatus[]>([])
 
     return (
         <Container
@@ -30,7 +33,9 @@ const Dashboard = () => {
                 <ShipmentFilterSheet
                     bottomsheetRef={bottomSheetRef}
                     filtersSelected={filters}
-                    onSelectFilters={setFilters}
+                    onSelectFilters={(filter) => {
+                        setFilters(filter)
+                    }}
                 />
             }
         >
@@ -40,7 +45,7 @@ const Dashboard = () => {
                         Hello
                     </AppText>
                     <AppText style={styleSheet.name} type={TextTypes.BOLD}>
-                        Ibrahim Shaker
+                        {user?.full_name}
                     </AppText>
                 </View>
                 <AppSearchBar
@@ -78,7 +83,7 @@ const Dashboard = () => {
                         </View>
                     </View>
                     <FlatList
-                        data={data}
+                        data={shipment}
                         keyExtractor={(_, idx) => idx?.toString()}
                         renderItem={({ item }) => (
                             <ShipmentCard
@@ -86,6 +91,21 @@ const Dashboard = () => {
                             />
                         )}
                         contentContainerStyle={styleSheet.list}
+                        refreshControl={
+                            <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+                        }
+                        ListEmptyComponent={
+                            !isLoading ? (
+                                <View style={styleSheet.emptyState}>
+                                    <AppText style={styleSheet.emptyStateText}>
+                                        No shippments for found
+                                    </AppText>
+                                    <AppText style={styleSheet.emptyStateText}>
+                                        Pull to refresh
+                                    </AppText>
+                                </View>
+                            ) : null
+                        }
                     />
                 </View>
             </View>

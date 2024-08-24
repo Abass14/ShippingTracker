@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import CheckboxCheckedIcon from "../../../assets/svg/Checkbox-Check";
 import CheckboxUnCheckedIcon from "../../../assets/svg/Checkbox-Uncheck";
@@ -13,6 +13,10 @@ const Checkbox = ({isChecked, onChecked, size = 20, ...rest}: ICheckbox) => {
             return !prev
         })
     }
+
+    useEffect(() => {
+        setChecked(isChecked)
+    }, [isChecked])
 
     return (
         <TouchableOpacity onPress={handleChecked} {...rest}>

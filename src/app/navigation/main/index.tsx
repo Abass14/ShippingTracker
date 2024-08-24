@@ -4,9 +4,10 @@ import AuthenticationStack from "../stack/AuthenticationStack"
 import AuthenticatedTab from "../bottom-tab/AuthenticatedTab"
 import { useEffect } from "react"
 import SplashScreen from "react-native-splash-screen"
+import { useAppSelector } from "../../store/hooks/useSelector"
 
 const Main = () => {
-    const authenticated = true
+    const {user} = useAppSelector(state => state.Authentication)
 
     useEffect(() => {
         SplashScreen.hide()
@@ -15,7 +16,7 @@ const Main = () => {
     return (
         <SplashScreenWrapper>
             <NavigationContainer>
-                {!authenticated ? (
+                {!user?.full_name ? (
                     <AuthenticationStack />
                 ) : (
                     <AuthenticatedTab />

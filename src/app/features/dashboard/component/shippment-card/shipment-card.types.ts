@@ -1,6 +1,6 @@
 import { PressableProps } from "react-native";
-import { IShipment } from "../../data";
+import { IshipmentMessage } from "../../../../services/shipments/shipments.types";
 
 export interface IShipmentCard extends PressableProps {
-    shipment: IShipment
+    shipment: IshipmentMessage
 }

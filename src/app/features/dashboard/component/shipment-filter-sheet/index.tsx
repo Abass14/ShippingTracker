@@ -19,41 +19,26 @@ const ShipmentFilterSheet = ({
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
     const snapPoint = useMemo(() => ['1%', '40%'], [])
-    const [selectedFilters, setSelectedFilters] = useState<Record<string, ShipmentStatus>>(
-        filtersSelected?.reduce((acc: Record<string, ShipmentStatus>, item) => {
-            acc[item] = item
-            return acc
-        }, {}) //convert selected filter to map as initial vaalue
-    )
+    const [selectedFilters, setSelectedFilters] = useState<ShipmentStatus | null>(filtersSelected)
 
-    const filters = filtersSelected?.reduce(
-        (acc: Record<string, ShipmentStatus>, item) => {
-            acc[item] = item
-            return acc
-        }, {})
 
     const onDone = () => {
-        onSelectFilters(Object.values(selectedFilters))
+        onSelectFilters(selectedFilters)
         bottomsheetRef.current?.snapToPosition(0)
     }
 
     const handleSelectFilter = (filter: ShipmentStatus) => {
         setSelectedFilters(prev => {
-            let prevCopy = { ...prev }
-            if (prevCopy?.[filter]) {
-                delete prevCopy[filter]
+            if (prev === filter) {
+                return null
             } else {
-                prevCopy = {
-                    ...prevCopy,
-                    [filter]: filter
-                }
+                return filter
             }
-            return prevCopy
         })
     }
 
     useEffect(() => {
-        setSelectedFilters(filters)
+        setSelectedFilters(filtersSelected)
     }, [filtersSelected])
 
     return (
@@ -73,9 +58,9 @@ const ShipmentFilterSheet = ({
                         <TouchableOpacity
                             key={status}
                             onPress={() => handleSelectFilter(status)}
-                            style={[styleSheet.statusSpan, selectedFilters[status] ? styleSheet.activeSpan : null]}
+                            style={[styleSheet.statusSpan, selectedFilters === status ? styleSheet.activeSpan : null]}
                         >
-                            <AppText style={[styleSheet.statusText, selectedFilters[status] ? styleSheet.activeText : null]}>
+                            <AppText style={[styleSheet.statusText, selectedFilters === status ? styleSheet.activeText : null]}>
                                 {status}
                             </AppText>
                         </TouchableOpacity>

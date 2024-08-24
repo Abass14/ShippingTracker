@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Screens, Stacks } from "../../../utils/navigation";
+import { Stacks } from "../../../utils/navigation";
 import DashboardStack from "../stack/DashboardStack";
 import ScanStack from "../stack/ScanStack";
 import WalletStack from "../stack/WalletStack";

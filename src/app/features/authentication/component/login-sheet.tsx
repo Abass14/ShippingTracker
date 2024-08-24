@@ -8,10 +8,12 @@ import AppButton from "../../../components/button"
 import { useMemo, useState } from "react"
 import useAppTheme from "../../../hooks/useAppTheme"
 import { styles } from "./styles"
+import useLogin from "../hook/useLogin"
 
 const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
     const {appColors} = useAppTheme()
     const styleSheet = styles(appColors)
+    const {LoginFormik, isLoading} = useLogin()
     const snapPoints = useMemo(() => ['1%', '90%'], [])
     const [url, setUrl] = useState('')
 
@@ -43,15 +45,24 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                             placeholder="Username / Email"
                             label="Username / Email"
                             keyboardType="email-address"
+                            value={LoginFormik.values.usr}
+                            onChangeText={text => LoginFormik.setFieldValue('usr', text)}
+                            error={LoginFormik.errors.usr}
                         />
                         <AppInput
                             placeholder="Password"
                             label="Password"
                             secureTextEntry
+                            value={LoginFormik.values.pwd}
+                            onChangeText={text => LoginFormik.setFieldValue('pwd', text)}
+                            error={LoginFormik.errors.pwd}
                         />
                     </View>
                 </View>
-                <AppButton>
+                <AppButton 
+                    onPress={() => LoginFormik.submitForm()}
+                    isLoading={isLoading}
+                >
                     Login
                 </AppButton>
             </View>

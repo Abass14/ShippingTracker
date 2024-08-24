@@ -8,7 +8,8 @@ export const shipmentStatusList = {
     [ShipmentStatus.Lost]: ShipmentStatus.Lost,
     [ShipmentStatus.OnHold]: ShipmentStatus.OnHold,
     [ShipmentStatus.Putaway]: ShipmentStatus.Putaway,
-    [ShipmentStatus.Rejected]: ShipmentStatus.Rejected
+    [ShipmentStatus.Rejected]: ShipmentStatus.Rejected,
+    [ShipmentStatus.NewShipmentTT]: ShipmentStatus.NewShipmentTT
 }
 
 export const shipmentStatusColorMap = (color: AppColorTheme): Record<
@@ -22,4 +23,5 @@ export const shipmentStatusColorMap = (color: AppColorTheme): Record<
     [ShipmentStatus.Putaway]: { bg: color.lightWarningOrange, color: color.warningOrange },
     [ShipmentStatus.Received]: { bg: color.lightRoyalBlue, color: color.royalBlue },
     [ShipmentStatus.Rejected]: { bg: color.lightErrorRed, color: color.errorRed },
+    [ShipmentStatus.NewShipmentTT]: { bg: color.lightRoyalBlue, color: color.royalBlue },
 })
