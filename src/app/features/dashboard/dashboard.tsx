@@ -10,12 +10,9 @@ import AppButton from "../../components/button"
 import FilterIcon from "../../../assets/svg/FilterIcon"
 import ScanIcon from "../../../assets/svg/ScanIcon"
 import Checkbox from "../../components/checkbox"
-import { data } from "./data"
 import ShipmentCard from "./component/shippment-card"
 import ShipmentFilterSheet from "./component/shipment-filter-sheet"
 import useBottomSheet from "../../hooks/useBottomSheet"
-import { useState } from "react"
-import { ShipmentStatus } from "../../../utils/enum/ShipmentStatus"
 import useShipments from "./hook/useShipments"
 import { useAppSelector } from "../../store/hooks/useSelector"
 
@@ -23,7 +20,16 @@ const Dashboard = () => {
     const {user} = useAppSelector(state => state.Authentication)
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
-    const { shipment, filters, setFilters, isLoading, onRefresh } = useShipments()
+    const { 
+        shipment,
+        isAllShipmentsMarked, 
+        filters, 
+        setFilters, 
+        isLoading, 
+        onRefresh, 
+        setShipment,
+        handleMarkAll 
+    } = useShipments()
     const { bottomSheetRef, openBottomSheet } = useBottomSheet()
 
     return (
@@ -74,8 +80,8 @@ const Dashboard = () => {
                         </AppText>
                         <View style={styleSheet.checkboxRow}>
                             <Checkbox
-                                isChecked={true}
-                                onChecked={checked => { }}
+                                isChecked={isAllShipmentsMarked}
+                                onChecked={handleMarkAll}
                             />
                             <AppText style={styleSheet.markAll} type={TextTypes.MEDIUM}>
                                 Mark All
@@ -85,9 +91,18 @@ const Dashboard = () => {
                     <FlatList
                         data={shipment}
                         keyExtractor={(_, idx) => idx?.toString()}
-                        renderItem={({ item }) => (
+                        renderItem={({ item, index }) => (
                             <ShipmentCard
-                                shipment={item}
+                                shipment={item?.shipment}
+                                isChecked={item?.checked}
+                                onCheck={(checked) => {
+                                    const shipmentsCopy = [...shipment]
+                                    shipmentsCopy[index] = {
+                                        ...shipmentsCopy[index],
+                                        checked
+                                    }
+                                    setShipment(shipmentsCopy)
+                                }}
                             />
                         )}
                         contentContainerStyle={styleSheet.list}

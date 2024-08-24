@@ -3,4 +3,6 @@ import { IshipmentMessage } from "../../../../services/shipments/shipments.types
 
 export interface IShipmentCard extends PressableProps {
     shipment: IshipmentMessage
+    isChecked: boolean
+    onCheck: (checked: boolean) => void
 }

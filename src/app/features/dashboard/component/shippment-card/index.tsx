@@ -8,27 +8,38 @@ import useAppTheme from "../../../../hooks/useAppTheme"
 import { styles } from "./styles"
 import { TextTypes } from "../../../../../utils/enum/TextEnums"
 import { IShipmentCard } from "./shipment-card.types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { shipmentStatusColorMap } from "../../../../../utils/shipment"
 
 const ShipmentCard = ({
     shipment,
+    isChecked = false,
+    onCheck,
     ...rest
 }: IShipmentCard) => {
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
     const statusColors = shipmentStatusColorMap(appColors)
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(isChecked)
+
+    const handleChecked = () => {
+        setChecked(!checked)
+        onCheck(!checked)
+    }
+
+    useEffect(() => {
+        setChecked(isChecked)
+    }, [isChecked])
 
     return (
         <Pressable
             style={[styleSheet.container, checked ? styleSheet.active : null]}
-            onPress={() => setChecked(!checked)}
+            onPress={handleChecked}
             {...rest}
         >
             <Checkbox
                 isChecked={checked}
-                onChecked={setChecked}
+                onChecked={handleChecked}
             />
             <ShpipmentBox />
             <View style={styleSheet.details}>
