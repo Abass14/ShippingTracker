@@ -9,7 +9,7 @@ import { styles } from "./styles"
 import { TextTypes } from "../../../../../utils/enum/TextEnums"
 import { IShipmentCard } from "./shipment-card.types"
 import { useEffect, useState } from "react"
-import { shipmentStatusColorMap } from "../../../../../utils/shipment"
+import { shipmentStatusColorMap, shipmentStatusToDisplayName } from "../../../../../utils/shipment"
 
 const ShipmentCard = ({
     shipment,
@@ -69,7 +69,7 @@ const ShipmentCard = ({
                     ]}
                     type={TextTypes.MEDIUM}
                 >
-                    {shipment?.status?.includes("New") ? "New" : shipment?.status}
+                    {shipmentStatusToDisplayName[shipment?.status]}
                 </AppText>
             </View>
             <ArrowIndicatorIcon />

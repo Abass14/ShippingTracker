@@ -12,6 +12,17 @@ export const shipmentStatusList = {
     [ShipmentStatus.NewShipmentTT]: ShipmentStatus.NewShipmentTT
 }
 
+export const shipmentStatusToDisplayName = {
+    [ShipmentStatus.Received]: ShipmentStatus.Received,
+    [ShipmentStatus.Delivered]: ShipmentStatus.Delivered,
+    [ShipmentStatus.Cancelled]: ShipmentStatus.Cancelled,
+    [ShipmentStatus.Lost]: ShipmentStatus.Lost,
+    [ShipmentStatus.OnHold]: ShipmentStatus.OnHold,
+    [ShipmentStatus.Putaway]: ShipmentStatus.Putaway,
+    [ShipmentStatus.Rejected]: ShipmentStatus.Rejected,
+    [ShipmentStatus.NewShipmentTT]: 'New'
+}
+
 export const shipmentStatusColorMap = (color: AppColorTheme): Record<
     ShipmentStatus,
     { bg: string, color: string }

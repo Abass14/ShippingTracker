@@ -1,5 +1,6 @@
 import * as Yup from 'yup'
 
+/**Login dform data */
 export const LoginData = {
     usr: '',
     pwd: ''
