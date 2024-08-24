@@ -1,9 +1,9 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { AppColorTheme } from "../../../../utils/interfaces/Theme.types";
 
 export const styles = (color: AppColorTheme) => StyleSheet.create({
     container: {
-        height: '100%',
+        height: Dimensions.get('window').height - 200,
         justifyContent: 'space-between'
     },
     main: {

@@ -14,14 +14,12 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
     const {appColors} = useAppTheme()
     const styleSheet = styles(appColors)
     const {LoginFormik, isLoading} = useLogin()
-    const snapPoints = useMemo(() => ['1%', '90%'], [])
     const [url, setUrl] = useState('')
 
     return (
         <AppBottomSheet
             bottomsheetRef={bottomsheetRef}
             withBackIcon
-            snapPoints={snapPoints}
             {...rest}
         >
             <View style={styleSheet.container}>

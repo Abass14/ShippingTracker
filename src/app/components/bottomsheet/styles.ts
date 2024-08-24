@@ -24,16 +24,16 @@ export const styles = (color: AppColorTheme) => StyleSheet.create({
     },
     container: {
         paddingHorizontal: 10,
-        paddingBottom: 70,
         height: '100%'
     },
     header: {
-        height: 45,
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomWidth: 1,
         borderColor: color.gray,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
     },
     hyperlinks: {
         fontSize: 14,

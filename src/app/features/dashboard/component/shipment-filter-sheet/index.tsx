@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import AppBottomSheet from "../../../../components/bottomsheet";
 import { IShipmentFilterSheet } from "./shipment-filter-sheet.types";
 import { TouchableOpacity, View } from "react-native";
@@ -18,13 +18,12 @@ const ShipmentFilterSheet = ({
 }: IShipmentFilterSheet) => {
     const { appColors } = useAppTheme()
     const styleSheet = styles(appColors)
-    const snapPoint = useMemo(() => ['1%', '40%'], [])
     const [selectedFilters, setSelectedFilters] = useState<ShipmentStatus | null>(filtersSelected)
 
 
     const onDone = () => {
         onSelectFilters(selectedFilters)
-        bottomsheetRef.current?.snapToPosition(0)
+        bottomsheetRef.current?.close()
     }
 
     const handleSelectFilter = (filter: ShipmentStatus) => {
@@ -46,7 +45,6 @@ const ShipmentFilterSheet = ({
             bottomsheetRef={bottomsheetRef}
             title="Filter"
             onDone={onDone}
-            snapPoints={snapPoint}
             {...rest}
         >
             <View style={styleSheet.container}>

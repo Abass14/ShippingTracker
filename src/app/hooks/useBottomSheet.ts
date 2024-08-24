@@ -1,12 +1,12 @@
-import BottomSheet from "@gorhom/bottom-sheet"
-import { useCallback, useRef } from "react"
+import { useRef } from "react"
+import { Modalize } from "react-native-modalize"
 
 const useBottomSheet = () => {
-    const bottomSheetRef = useRef<BottomSheet | null>(null)
+    const bottomSheetRef = useRef<Modalize | null>(null)
 
     const openBottomSheet = () => {
         if (bottomSheetRef.current) {
-            bottomSheetRef.current?.expand()
+            bottomSheetRef.current?.open()
         }
     }
 
@@ -16,22 +16,10 @@ const useBottomSheet = () => {
         }
     }
 
-    const snapToPosition = (index: number) => {
-        if (bottomSheetRef.current) {
-            bottomSheetRef.current?.snapToIndex(index)
-        }
-    }
-
-    const handleSheetChanges = useCallback((index: number) => {
-
-    }, [])
-
     return {
         bottomSheetRef,
         openBottomSheet,
         closeBottomSheet,
-        snapToPosition,
-        handleSheetChanges
     }
 }
 

@@ -1,11 +1,20 @@
-import { BottomSheetProps } from "@gorhom/bottom-sheet";
-import BottomSheet from "@gorhom/bottom-sheet";
-import { ReactNode, RefObject } from "react";
 
-export interface IBottomSheet extends Omit<BottomSheetProps, 'children'> {
+import { ReactNode, RefObject } from "react";
+import { StyleProp, ViewStyle } from "react-native";
+import { Modalize, ModalizeProps } from "react-native-modalize";
+
+export interface IBottomSheet extends ModalizeProps {
     title?: string
     onDone?: () => void
     withBackIcon?: boolean
-    bottomsheetRef: RefObject<BottomSheet>
-    children: ReactNode
+    bottomsheetRef: RefObject<Modalize>
+    scrollEnabled?: boolean;
+    horizontal?: boolean;
+    handleClose?: () => void;
+    withCloseIcon?: boolean;
+    accessibilityLabel?: string;
+    SubTitleComponent?: ReactNode | string;
+    DialogueIcon?: ReactNode,
+    dialogueIconStyles?: StyleProp<ViewStyle>
+    contentStyle?: StyleProp<ViewStyle>
 }
