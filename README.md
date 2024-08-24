@@ -1,6 +1,14 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Getting Started with ShipmentTracker App
 
-# Getting Started
+## Get the project
+
+Clone the project with this Github link: https://github.com/Abass14/ShippingTracker.git
+
+## Set up your environment variables 
+
+Add a **.env** file in the root of the project and add the BASE_URL (BASE_URL as the key and the value next to it)
+
+<BASE_URL>=<VALUE>
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
