@@ -69,7 +69,7 @@ const ShipmentCard = ({
                     ]}
                     type={TextTypes.MEDIUM}
                 >
-                    {shipmentStatusToDisplayName[shipment?.status]}
+                    {shipmentStatusToDisplayName[shipment?.status] ?? shipment?.status}
                 </AppText>
             </View>
             <ArrowIndicatorIcon />

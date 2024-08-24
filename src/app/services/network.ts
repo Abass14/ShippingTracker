@@ -1,9 +1,11 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { ErrorEnum } from "../../utils/enum/ErrorEnum";
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
+import { BASE_URL } from "@env";
+import { Alert } from "react-native";
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://shippex-demo.bc.brandimic.com/api/method',
+    baseURL: BASE_URL,
     timeout: 50_000,
     timeoutErrorMessage: 'Request Timeout'
 })
@@ -61,6 +63,7 @@ const axiosBaseQuery = (): BaseQueryFn<AxiosRequestConfig, unknown, AxiosError> 
             return { data: response?.data }
         } catch (error) {
             const axiosError = error as AxiosError
+            Alert.alert(axiosError?.message) // In the real sense, this would be a proper error dialogue and will be called based on certain endpoint logic
             return {
                 error: axiosError
             }
