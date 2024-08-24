@@ -1,16 +1,12 @@
-import React, { useEffect } from "react";
-import { Platform, StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
 import useAppTheme from "./src/app/hooks/useAppTheme";
 import { AppColorTheme } from "./src/utils/interfaces/Theme.types"
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Main from "./src/app/navigation/main";
-import SplashScreen from "react-native-splash-screen"
 import { Provider } from "react-redux";
 import store from "./src/app/store/store";
 
-if (Platform.OS === 'android') {
-  SplashScreen.show()
-}
 const App = () => {
   const { appColors } = useAppTheme()
   const style = styles(appColors)
