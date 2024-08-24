@@ -8,7 +8,7 @@ Clone the project with this Github link: https://github.com/Abass14/ShippingTrac
 
 Add a **.env** file in the root of the project and add the BASE_URL (BASE_URL as the key and the value next to it)
 
-<BASE_URL>=<VALUE>
+<BASE_URL>=some string value
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
