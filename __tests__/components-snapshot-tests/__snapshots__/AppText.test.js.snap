@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AppText correctly 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "Montserrat-Regular",
+      },
+      {
+        "color": "#000",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

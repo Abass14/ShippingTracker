@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AppContainer correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "gap": 20,
+      },
+      {
+        "backgroundColor": "#fff",
+      },
+    ]
+  }
+>
+  <StatusBar
+    backgroundColor="#fff"
+    barStyle="dark-content"
+  />
+  <RCTSafeAreaView
+    style={
+      {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "gap": 20,
+      }
+    }
+  >
+    <KeyboardAvoidingView
+      behavior="padding"
+      style={
+        [
+          {
+            "backgroundColor": "#fff",
+            "flex": 1,
+            "gap": 20,
+          },
+          {
+            "paddingHorizontal": 20,
+          },
+        ]
+      }
+    />
+  </RCTSafeAreaView>
+</View>
+`;

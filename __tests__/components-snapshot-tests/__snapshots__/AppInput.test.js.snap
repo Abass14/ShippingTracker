@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AppInput correctly 1`] = `
+<View
+  style={
+    {
+      "gap": 4,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#F4F2F8",
+          "borderColor": "#2F50C1",
+          "borderRadius": 10,
+          "gap": 4,
+          "height": 56,
+          "justifyContent": "center",
+          "paddingHorizontal": 12,
+          "paddingVertical": 6,
+          "width": "100%",
+        },
+        null,
+        null,
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "gap": 5,
+          "width": "100%",
+        }
+      }
+    >
+      <TextInput
+        onBlur={[Function]}
+        onFocus={[Function]}
+        style={
+          [
+            {
+              "alignItems": "center",
+              "color": "#2F50C1",
+              "flex": 1,
+              "fontSize": 14,
+              "paddingVertical": 5,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

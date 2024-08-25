@@ -36,11 +36,13 @@ const LandingScreen = () => {
             <AppButton
                 type={ButtonTypes.WHITE}
                 onPress={openBottomSheet}
+                testID="login-sheet-opener"
             >
                 Login
             </AppButton>
             <LoginSheet 
                 bottomsheetRef={bottomSheetRef}
+                contentTestId="login-sheet"
             />
         </Animated.View>
     )

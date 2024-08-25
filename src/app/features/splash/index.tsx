@@ -1,9 +1,8 @@
-import { Animated, StatusBar, View } from "react-native"
+import { Animated, StatusBar, View, ViewProps } from "react-native"
 import SplashIcon from "../../../assets/svg/SplashIcon"
 import useAppTheme from "../../hooks/useAppTheme"
 import { styles } from "./styles"
 import { useEffect, useRef, useState } from "react"
-import { ViewProps } from "react-native-svg/lib/typescript/fabric/utils"
 
 const SplashScreenWrapper = ({ children }: ViewProps) => {
     const { appColors } = useAppTheme()
@@ -83,7 +82,7 @@ const SplashScreenWrapper = ({ children }: ViewProps) => {
                                     rotateX: rotationX,
                                 },
                                 {
-                                    rotateY: rotationY
+                                    rotateY: rotationY,
                                 },
                                 {
                                     translateX,

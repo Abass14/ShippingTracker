@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SearchBar correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#F4F2F8",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "gap": 10,
+      "height": 44,
+      "paddingHorizontal": 14,
+    }
+  }
+>
+  <SearchIcon />
+  <TextInput
+    onChangeText={[Function]}
+    style={
+      [
+        {
+          "color": "#2F50C1",
+          "flex": 1,
+          "fontSize": 16,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

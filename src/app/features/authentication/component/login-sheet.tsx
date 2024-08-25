@@ -38,6 +38,7 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                             prefix="https://"
                             value={url}
                             onChangeText={setUrl}
+                            testID="url"
                         />
                         <AppInput
                             placeholder="Username / Email"
@@ -46,6 +47,8 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                             value={LoginFormik.values.usr}
                             onChangeText={text => LoginFormik.setFieldValue('usr', text)}
                             error={LoginFormik.errors.usr}
+                            testID="username"
+                            errorTestId="username-error"
                         />
                         <AppInput
                             placeholder="Password"
@@ -54,12 +57,15 @@ const LoginSheet = ({ bottomsheetRef, ...rest }: ILoginSheet) => {
                             value={LoginFormik.values.pwd}
                             onChangeText={text => LoginFormik.setFieldValue('pwd', text)}
                             error={LoginFormik.errors.pwd}
+                            testID="password"
+                            errorTestId="password-error"
                         />
                     </View>
                 </View>
                 <AppButton 
                     onPress={() => LoginFormik.submitForm()}
                     isLoading={isLoading}
+                    testID="login-btn"
                 >
                     Login
                 </AppButton>

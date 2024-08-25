@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Checkbox correctly 1`] = `
+<TouchableOpacity
+  onPress={[Function]}
+>
+  <CheckboxCheckedIcon
+    size={20}
+  />
+</TouchableOpacity>
+`;

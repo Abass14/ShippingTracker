@@ -11,6 +11,8 @@ const AppInput = ({
     error,
     style,
     prefix,
+    testID,
+    errorTestId,
     ...rest
 }: IAppInput) => {
     const { appColors } = useAppTheme()
@@ -66,6 +68,7 @@ const AppInput = ({
                     ) : null}
                     <TextInput
                         style={[styleSheet.input, style]}
+                        testID={testID}
                         value={value}
                         onFocus={() => {
                             setIsFocused(true)
@@ -78,7 +81,7 @@ const AppInput = ({
                 </View>
             </View>
             {error && (
-                <AppText style={styleSheet.error}>
+                <AppText testID={errorTestId} style={styleSheet.error}>
                     {error}
                 </AppText>
             )}

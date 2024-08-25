@@ -17,4 +17,6 @@ export interface IBottomSheet extends ModalizeProps {
     DialogueIcon?: ReactNode,
     dialogueIconStyles?: StyleProp<ViewStyle>
     contentStyle?: StyleProp<ViewStyle>
+    contentTestId?: string
+    headerTestId?: string
 }

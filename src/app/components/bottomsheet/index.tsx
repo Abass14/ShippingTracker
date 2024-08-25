@@ -28,6 +28,8 @@ const AppBottomSheet = ({
     DialogueIcon,
     dialogueIconStyles,
     contentStyle,
+    contentTestId,
+    headerTestId,
     ...rest
 }: IBottomSheet) => {
     const { appColors } = useAppTheme()
@@ -55,7 +57,7 @@ const AppBottomSheet = ({
                 keyboardAvoidingBehavior={Platform.OS === 'ios' ? undefined : 'height'}
                 onClose={onClose}
                 HeaderComponent={
-                    <View style={styleSheet.header}>
+                    <View testID={headerTestId} style={styleSheet.header}>
                         <Pressable style={styleSheet.row} onPress={() => bottomsheetRef.current?.close()}>
                             {withBackIcon && <ChevroLeftIcon />}
                             <AppText type={TextTypes.MEDIUM} style={styleSheet.hyperlinks}>
@@ -78,7 +80,7 @@ const AppBottomSheet = ({
                 }
                 FooterComponent={<View style={{ paddingBottom: bottom }} >{FooterComponent}</View>}
                 {...rest}>
-                <View style={styleSheet.container}>
+                <View testID={contentTestId} style={styleSheet.container}>
                     <View style={styleSheet.children}>
                         {children}
                     </View>
